@@ -4,6 +4,7 @@ from flask_cors import CORS
 from PIL import Image
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 import io
+import os
 import threading
 
 # Initialize Flask app
@@ -40,7 +41,8 @@ def api_extract_text():
 
 # Run the Flask server in a separate thread
 def run_flask():
-    flask_app.run(port=5001)
+    port = int(os.environ.get("PORT", 5001))  # Set port from environment or use 5001
+    flask_app.run(port=port, host='0.0.0.0')  # Ensure Flask binds to all interfaces
 
 thread = threading.Thread(target=run_flask)
 thread.start()
