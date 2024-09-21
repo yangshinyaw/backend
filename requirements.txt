@@ -1,6 +1,7 @@
-streamlit
+transformers==4.9.0
+torch==1.9.0  # or a more recent compatible version
 flask
+streamlit
+pillow
 flask-cors
-transformers
-torch
-Pillow
+gunicorn
